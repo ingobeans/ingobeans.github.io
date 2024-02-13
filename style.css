@@ -1,0 +1,33 @@
+:root {
+    background-color: var(--primaryColor);
+    color: var(--textColor);
+    font-size: 18px;
+    margin: 0px;
+}
+
+body {
+    margin: 0px;
+    overflow: hidden;
+}
+
+#prompt-container {
+    padding-left:50%;
+    overflow: hidden;
+}
+
+#prompt{
+    color: var(--textColor);
+    border-width: 0px;
+    width:100vw;
+    background-color: var(--primaryColor);
+    font-size: 18px;
+    position: absolute;
+    height: 100vh;
+}
+#prompt:focus {
+    outline: none;
+}
+
+textarea {
+    resize: none;
+}
