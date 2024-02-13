@@ -19,7 +19,7 @@ function printOut(text){
     var textElement = document.createElement("p");
     textElement.innerText = text;
     textElement.classList.add("text-output");
-    terminalElement.insertBefore(textElement, inputElement);
+    terminalElement.insertBefore(textElement, inputElement.parentElement);
 }
 
 function handleCommand(keyword,args){
@@ -35,6 +35,10 @@ document.body.addEventListener('keydown', function(event) {
         inputElement.value = "";
     };
 });
+
+function setFocusToPrompt() {
+    inputElement.focus();
+}
 
 if (localStorage.getItem("theme") == null){
     localStorage.setItem("theme","dark");

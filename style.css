@@ -11,10 +11,11 @@ body {
     font-weight: 400;
     font-style: normal;
     font-size: 16px;
+    cursor: text;
 }
 
 #terminal {
-    
+    height: 100vh;
 }
 
 #prompt{
@@ -24,6 +25,7 @@ body {
     position: absolute;
     font-size: inherit;
     font-family: inherit;
+    margin: -1px;
 }
 #prompt:focus {
     outline: none;
