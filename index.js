@@ -1,6 +1,5 @@
 const inputElement = document.getElementById('prompt');
-
-var writableKeys = "qwertyuiopasdfghjklzxcvbnm<,.-'+1234567890 "
+const terminalElement = document.getElementById('terminal');
 
 const THEMES = {
     "dark":["#242424","#c1c1c1","#151515","#34ee51"],
@@ -16,24 +15,25 @@ function setTheme(theme){
     r.style.setProperty('--highlightColor', THEMES[theme][3]);
 }
 
+function printOut(text){
+    var textElement = document.createElement("p");
+    textElement.innerText = text;
+    textElement.classList.add("text-output");
+    terminalElement.insertBefore(textElement, inputElement);
+}
+
 function handleCommand(keyword,args){
-    
+    console.log(keyword, args);
+    printOut("received your command!")
 }
 
 document.body.addEventListener('keydown', function(event) {
-    event.preventDefault();
     if (event.key === "Enter") {
         let value = inputElement.value;
         let args = value.trim().split(" ");
         handleCommand(args.shift(),args);
         inputElement.value = "";
     };
-    if (writableKeys.includes(event.key)){
-        inputElement.value+=event.key
-    }
-    if (event.key === "Backspace"){
-        inputElement.value = inputElement.value.slice(0,inputElement.value.length-1);
-    }
 });
 
 if (localStorage.getItem("theme") == null){
