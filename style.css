@@ -26,6 +26,7 @@ body {
     font-size: inherit;
     font-family: inherit;
     margin: -1px;
+    width: 100%;
 }
 #prompt:focus {
     outline: none;
