@@ -246,13 +246,42 @@ function handleCommand(raw,keyword,args,argsArray){
     }
 }
 
-document.body.addEventListener('keydown', function(event) {
+let commandHistory = [];
+let historyIndex = -1;
+
+inputElement.addEventListener('keydown', function(event) {
     if (event.key === "Enter") {
         let value = inputElement.value;
         let args = value.trim().split(" ");
         handleCommand(value, args.shift(), args.join(" "), args);
         inputElement.value = "";
-    };
+
+        if (value != ""){
+            commandHistory.unshift(value);
+            historyIndex = -1; 
+        }
+    }
+    
+    // for history navigation:
+    else if (event.key === "ArrowUp") {
+        event.preventDefault();
+        if (historyIndex < commandHistory.length - 1) {
+            historyIndex++;
+            inputElement.value = commandHistory[historyIndex];
+            inputElement.setSelectionRange(inputElement.value.length, inputElement.value.length);
+        }
+    } else if (event.key === "ArrowDown") {
+        event.preventDefault();
+        if (historyIndex > 0) {
+            historyIndex--;
+            inputElement.value = commandHistory[historyIndex];
+            inputElement.setSelectionRange(inputElement.value.length, inputElement.value.length);
+        } else if (historyIndex === 0) {
+            historyIndex = -1;
+            inputElement.value = "";
+            // show empty input at top of history
+        }
+    }
 });
 
 function setFocusToPrompt() {
