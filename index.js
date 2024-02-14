@@ -5,30 +5,14 @@ const promptSpanElement = document.getElementById('prompt-span');
 cwd = "/"
 directories = 
     {
-        "home":
+        "projects":
         {
-            "downloads": 
-            {
-                "dog.png":"<IMG DATA>",
-                "cat.png":"<IMG DATA>",
-                "stuff.txt":"dont forget to do laundry"
-            }
-            
+            "test.txt":"test file",
+            "test2.txt":"test file no. 2",
+            "test3.txt":"test file no. 3",
+            "test4.txt":"test file no. 4"
         },
-        "root":
-        {
-            "programs":
-            {
-                "ffmpeg":"<PROGRAM DATA>"
-            },
-            "userdata":
-            {
-                "microsoft":
-                {
-                    "config.ini":"<CONFIG FILE>"
-                }
-            }
-        }
+        "info.txt": `github: https://github.com/ingobeans`
     }
 
 HELPMESSAGE = 
@@ -36,7 +20,8 @@ HELPMESSAGE =
 pwd - prints current working directory
 cd <path> - change directory
 theme <new theme> - set theme
-open <path> - open file`
+cls - clear terminal
+cat <path> - read file`
 
 const THEMES = {
     "dark":["#242424","#c1c1c1","#151515","#34ee51"],
@@ -64,7 +49,9 @@ function printOut(text,color="inherit"){
 
     var textElement = document.createElement("p");
     textElement.innerText = text;
-    textElement.innerHTML = textElement.innerHTML.replace(/(https:\/\/\S+)/, '<a href="$1">$1</a>');
+    textElement.innerHTML = textElement.innerHTML.replace(/(https:\/\/\S+)/, '<a href="$1" target="_blank">$1</a>');
+    // replace URLs with clickable URLs
+
     textElement.classList.add("text-output");
     textElement.style = "color: "+color;
     terminalElement.insertBefore(textElement, inputElement.parentElement);
@@ -132,6 +119,41 @@ function removeLastPathComponent(path) {
     return result;
 }
 
+function readFile(path) {
+    const parts = path.split('/').filter(part => part !== '');
+
+    let currentDir = directories;
+
+    for (const part of parts.slice(0, -1)) {
+        if (currentDir[part] && typeof currentDir[part] === 'object') {
+        currentDir = currentDir[part];
+        } else {
+        return null;
+        }
+    }
+
+    const fileName = parts[parts.length - 1];
+    const fileContent = currentDir[fileName];
+
+    return typeof fileContent === 'string' ? fileContent : null;
+}
+
+function fileExists(path) {
+    const parts = path.split('/').filter(part => part !== '');
+
+    let currentDir = directories;
+
+    for (const part of parts.slice(0, -1)) {
+        if (currentDir[part] && typeof currentDir[part] === 'object') {
+        currentDir = currentDir[part];
+        } else {
+        return false;
+        }
+    }
+
+    const fileName = parts[parts.length - 1];
+    return currentDir.hasOwnProperty(fileName) && typeof currentDir[fileName] === 'string';
+}
 
 function handleCommand(raw,keyword,args,argsArray){
     console.log(keyword, argsArray);
@@ -148,6 +170,25 @@ function handleCommand(raw,keyword,args,argsArray){
         case "pwd":
             printOut(cwd);
             break;
+        case "cat":
+            if (argsArray.length != 1){
+                printError("incorrect arguments");
+                break;
+            }
+            var path = args.replace(/^\/+|\/+$/g, '');
+            
+            if (fileExists(cwd+path)){
+                path = cwd+path;
+            }else if (fileExists(path)){
+            
+            }else{
+                printError("file '" + args + "' doesn't exist");
+                break;
+            }
+            var contents = readFile(path);
+            printOut(contents);
+            
+            break;
         case "theme":
             if (argsArray.length != 1){
                 printOut("Available themes:");
@@ -159,28 +200,29 @@ function handleCommand(raw,keyword,args,argsArray){
             localStorage.setItem("theme",argsArray[0]);
             setTheme(localStorage.getItem("theme"));
             break;
+        case "cls":
+            document.querySelectorAll('.text-output').forEach(e => e.remove());
+            break;
         case "cd":
             if (argsArray.length != 1){
                 printError("incorrect arguments");
                 break;
             }
             var dir = "";
-            args = args.replace(/^\/+|\/+$/g, '');
-            if (args == ".." || args == "../"){
+            var path = args.replace(/^\/+|\/+$/g, '');
+            if (path == ".."){
                 dir = removeLastPathComponent(cwd);
             }
-            else if (directoryExists(args)){
-                dir = args;
-            } else if(directoryExists(cwd+args)) {
-                dir = cwd+args;
+            else if (directoryExists(path)){
+                dir = path;
+            } else if(directoryExists(cwd+path)) {
+                dir = cwd+path;
             } else {
                 printError("directory '" + args + "' doesn't exist");
                 break;
             }
 
-            if (!dir.endsWith("/")){
-                dir += "/"
-            }
+            dir += "/";
 
             cwd = dir;
             break;
