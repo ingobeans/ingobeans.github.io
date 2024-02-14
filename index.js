@@ -117,9 +117,18 @@ function listDirectory(path) {
       return result;
 }
 
+function removeLastPathComponent(path) {
+    const pathArray = path.substring(0, path.length-1).split('/');
+    pathArray.pop();
+    const result = pathArray.join('/');
+
+    return result;
+}
+
+
 function handleCommand(raw,keyword,args,argsArray){
     console.log(keyword, argsArray);
-    printOut(">"+raw);
+    printOut(">"+raw,"#999");
     
     if (raw == ""){
         return;
@@ -137,8 +146,12 @@ function handleCommand(raw,keyword,args,argsArray){
                 printError("incorrect arguments");
                 break;
             }
-            var dir = ""
-            if (directoryExists(args)){
+            var dir = "";
+            args = args.replace(/^\/+|\/+$/g, '');
+            if (args == ".." || args == "../"){
+                dir = removeLastPathComponent(cwd);
+            }
+            else if (directoryExists(args)){
                 dir = args;
             } else if(directoryExists(cwd+args)) {
                 dir = cwd+args;
@@ -165,7 +178,7 @@ function handleCommand(raw,keyword,args,argsArray){
             });
             break;
         default:
-            printError("'"+keyword+"' tis not recognised as an internal command.");
+            printError("tis not a recognized command");
             break;
     }
 }

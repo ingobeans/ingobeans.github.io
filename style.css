@@ -14,12 +14,16 @@ body {
     cursor: text;
 }
 
+#prompt-span {
+    color: #999;
+}
+
 #terminal {
     height: 100vh;
 }
 
 #prompt{
-    color: var(--textColor);
+    color: inherit;
     border-width: 0px;
     background-color: inherit;
     position: absolute;
