@@ -25,7 +25,8 @@ directories =
             discord chat bot which can be highly customizable characters defined by the user, uses the PAI-001 model or GPT-3.5 for chat completion.
             can also be combined with a webhook to allow it to customize avatar and username based on character preset`,
         },
-        "info.txt": `github: https://github.com/ingobeans`
+        "info.txt": `my github: https://github.com/ingobeans
+        i'm ingobeans! i make dumb apps and websites!`
     }
 
 HELPMESSAGE = 
@@ -327,5 +328,5 @@ if (localStorage.getItem("theme") == null){
 }
 
 setPrefix(">");
-printOut("ingobeans terminal\n ");
+printOut("ingobeans terminal v1");
 setTheme(localStorage.getItem("theme"));
