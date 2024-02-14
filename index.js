@@ -7,10 +7,23 @@ directories =
     {
         "projects":
         {
-            "test.txt":"test file",
-            "test2.txt":"test file no. 2",
-            "test3.txt":"test file no. 3",
-            "test4.txt":"test file no. 4"
+            "boopy.txt":`github: https://github.com/ingobeans/boopy
+
+            boopy is a free simple game engine for python with the goal to be quick to use and intuitive. tis based on pygame`,
+
+            "auto-owl-watcher.txt":`github: https://github.com/ingobeans/Auto-OWL-Watcher
+
+            a program which runs in the background and automatically streams overwatch league matches on youtube to generate owl tokens
+            (probably dead now since they canceled owl)`,
+
+            "wikipedia-chatgpt.txt":`github: https://github.com/ingobeans/wikipedia-ui-for-chatgpt
+            
+            a wikipedia looking frontend to access chatgpt`,
+            
+            "discord-character-bot.txt":`github: https://github.com/ingobeans/discord-character-bot
+            
+            discord chat bot which can be highly customizable characters defined by the user, uses the PAI-001 model or GPT-3.5 for chat completion.
+            can also be combined with a webhook to allow it to customize avatar and username based on character preset`,
         },
         "info.txt": `github: https://github.com/ingobeans`
     }
