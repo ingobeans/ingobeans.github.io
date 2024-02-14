@@ -101,13 +101,16 @@ function listDirectory(path) {
   
     const result = {
       directories: [],
-      files: []
+      files: [],
+      all: []
     };
     for (const [name, content] of Object.entries(currentDir)) {
         if (typeof content === 'object') {
           result.directories.push(name);
+          result.all.push(name);
         } else {
           result.files.push(name);
+          result.all.push(name);
         }
       }
     
@@ -280,6 +283,24 @@ inputElement.addEventListener('keydown', function(event) {
             historyIndex = -1;
             inputElement.value = "";
             // show empty input at top of history
+        }
+    }
+    
+    // for auto completions
+    else if (event.key === "Tab") {
+        event.preventDefault();
+        let value = inputElement.value.split(" ")[inputElement.value.split(" ").length - 1]; // auto complete the last word in input only
+        if (value == ""){
+            return;
+        }
+
+        let directoryContents = listDirectory(cwd).all;
+
+        for (const content of directoryContents) {
+            if (content.startsWith(value)) {
+                inputElement.value = inputElement.value.substring(0, inputElement.value.length - value.length) + content;
+                break;
+            }
         }
     }
 });
