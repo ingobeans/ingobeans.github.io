@@ -61,6 +61,7 @@ function printOut(text,color="inherit"){
     textElement.classList.add("text-output");
     textElement.style = "color: "+color;
     terminalElement.insertBefore(textElement, inputElement.parentElement);
+    window.scrollTo(0, document.body.scrollHeight);
 }
 
 function printError(text){
@@ -101,13 +102,29 @@ function listDirectory(path) {
       }
     }
   
-    return Object.keys(currentDir);
-  }
+    const result = {
+      directories: [],
+      files: []
+    };
+    for (const [name, content] of Object.entries(currentDir)) {
+        if (typeof content === 'object') {
+          result.directories.push(name);
+        } else {
+          result.files.push(name);
+        }
+      }
+    
+      return result;
+}
 
 function handleCommand(raw,keyword,args,argsArray){
     console.log(keyword, argsArray);
     printOut(">"+raw);
     
+    if (raw == ""){
+        return;
+    }
+
     switch (keyword){
         case "help":
             printOut("no help 4 u");
@@ -137,7 +154,15 @@ function handleCommand(raw,keyword,args,argsArray){
             cwd = dir;
             break;
         case "ls":
-            printOut(listDirectory(cwd).join("\n"));
+            contents = listDirectory(cwd);
+            console.log(contents);
+            
+            contents["directories"].forEach(directory => {
+                printOut(directory, "rgb(117, 117, 255)");
+            });
+            contents["files"].forEach(file => {
+                printOut(file, "rgb(89, 255, 89)");
+            });
             break;
         default:
             printError("'"+keyword+"' tis not recognised as an internal command.");
