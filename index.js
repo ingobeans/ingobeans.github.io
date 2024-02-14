@@ -31,10 +31,16 @@ directories =
         }
     }
 
+HELPMESSAGE = 
+`help - prints help message
+pwd - prints current working directory
+cd <path> - change directory
+theme <new theme> - set theme
+open <path> - open file`
 
 const THEMES = {
     "dark":["#242424","#c1c1c1","#151515","#34ee51"],
-    "light":["#ececec","#1a1a1a","#ffffff","#34ee51"]
+    "light":["#ececec","#1a1a1a","#ffffff","#2db943"]
 }
 
 function setTheme(theme){
@@ -58,6 +64,7 @@ function printOut(text,color="inherit"){
 
     var textElement = document.createElement("p");
     textElement.innerText = text;
+    textElement.innerHTML = textElement.innerHTML.replace(/(https:\/\/\S+)/, '<a href="$1">$1</a>');
     textElement.classList.add("text-output");
     textElement.style = "color: "+color;
     terminalElement.insertBefore(textElement, inputElement.parentElement);
@@ -136,10 +143,21 @@ function handleCommand(raw,keyword,args,argsArray){
 
     switch (keyword){
         case "help":
-            printOut("no help 4 u");
+            printOut(HELPMESSAGE);
             break;
         case "pwd":
             printOut(cwd);
+            break;
+        case "theme":
+            if (argsArray.length != 1){
+                printOut("Available themes:");
+                for (const theme in THEMES) {
+                    printOut(theme, "var(--highlightColor)")
+                };
+                break;
+            }
+            localStorage.setItem("theme",argsArray[0]);
+            setTheme(localStorage.getItem("theme"));
             break;
         case "cd":
             if (argsArray.length != 1){
@@ -178,7 +196,7 @@ function handleCommand(raw,keyword,args,argsArray){
             });
             break;
         default:
-            printError("tis not a recognized command");
+            printError("'tis an unrecognized command");
             break;
     }
 }
@@ -202,4 +220,4 @@ if (localStorage.getItem("theme") == null){
 
 setPrefix(">");
 printOut("ingobeans terminal\n ");
-setTheme("dark");
+setTheme(localStorage.getItem("theme"));
