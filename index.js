@@ -24,8 +24,8 @@ cls - clear terminal
 cat <path> - read file`
 
 const THEMES = {
-    "dark":["#242424","#c1c1c1","#151515","#34ee51"],
-    "light":["#ececec","#1a1a1a","#ffffff","#2db943"]
+    "dark":["#242424","#c1c1c1","#151515","#34ee51","#999999","#ff7676","#7575ff"],
+    "light":["#ececec","#1a1a1a","#ffffff","#2db943","#6a6a6a","#e33e3e","#2626ff"]
 }
 
 function setTheme(theme){
@@ -35,6 +35,9 @@ function setTheme(theme){
     r.style.setProperty('--textColor', THEMES[theme][1]);
     r.style.setProperty('--secondaryColor', THEMES[theme][2]);
     r.style.setProperty('--highlightColor', THEMES[theme][3]);
+    r.style.setProperty('--mutedColor', THEMES[theme][4]);
+    r.style.setProperty('--errorColor', THEMES[theme][5]);
+    r.style.setProperty('--secondaryHighlightColor', THEMES[theme][6]);
 }
 
 function printOut(text,color="inherit"){
@@ -59,7 +62,7 @@ function printOut(text,color="inherit"){
 }
 
 function printError(text){
-    printOut(text,"rgb(255, 118, 118)");
+    printOut(text,"var(--errorColor)");
 }
 
 function setPrefix(prefix){
@@ -157,7 +160,7 @@ function fileExists(path) {
 
 function handleCommand(raw,keyword,args,argsArray){
     console.log(keyword, argsArray);
-    printOut(">"+raw,"#999");
+    printOut(">"+raw,"var(--mutedColor)");
     
     if (raw == ""){
         return;
@@ -231,10 +234,10 @@ function handleCommand(raw,keyword,args,argsArray){
             console.log(contents);
             
             contents["directories"].forEach(directory => {
-                printOut(directory, "rgb(117, 117, 255)");
+                printOut(directory, "var(--secondaryHighlightColor)");
             });
             contents["files"].forEach(file => {
-                printOut(file, "rgb(89, 255, 89)");
+                printOut(file, "var(--highlightColor)");
             });
             break;
         default:

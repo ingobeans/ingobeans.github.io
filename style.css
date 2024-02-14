@@ -15,7 +15,7 @@ body {
 }
 
 #prompt-span {
-    color: #999;
+    color: var(--mutedColor);
 }
 
 #terminal {
