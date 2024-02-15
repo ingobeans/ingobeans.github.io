@@ -328,5 +328,5 @@ if (localStorage.getItem("theme") == null){
 }
 
 setPrefix(">");
-printOut("ingobeans terminal v1");
+printOut("ingobeans terminal v1\ntype 'help' for help");
 setTheme(localStorage.getItem("theme"));
