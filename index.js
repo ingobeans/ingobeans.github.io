@@ -35,6 +35,7 @@ pwd - prints current working directory
 cd <path> - change directory
 theme <new theme> - set theme
 cls - clear terminal
+ls - list contents of the current working directory
 cat <path> - read file`
 
 const THEMES = {
