@@ -9,7 +9,7 @@ directories =
         {
             "boopy.txt":`github: https://github.com/ingobeans/boopy
 
-            boopy is a free simple game engine for python with the goal to be quick to use and intuitive. tis based on pygame`,
+            boopy is a free simple game engine for python with the goal to be quick to use and intuitive. 'tis based on pygame`,
 
             "auto-owl-watcher.txt":`github: https://github.com/ingobeans/Auto-OWL-Watcher
 
@@ -101,7 +101,7 @@ function directoryExists(path) {
 }
 
 function listDirectory(path) {
-    const parts = path.split('/').filter(part => part !== ''); // Split path into parts and remove empty parts
+    const parts = path.split('/').filter(part => part !== '');
   
     let currentDir = directories;
   
@@ -109,7 +109,7 @@ function listDirectory(path) {
       if (currentDir[part] && typeof currentDir[part] === 'object') {
         currentDir = currentDir[part];
       } else {
-        return null; // Directory doesn't exist
+        return null;
       }
     }
   
@@ -146,9 +146,9 @@ function readFile(path) {
 
     for (const part of parts.slice(0, -1)) {
         if (currentDir[part] && typeof currentDir[part] === 'object') {
-        currentDir = currentDir[part];
+            currentDir = currentDir[part];
         } else {
-        return null;
+            return null;
         }
     }
 
@@ -247,7 +247,21 @@ function handleCommand(raw,keyword,args,argsArray){
             cwd = dir;
             break;
         case "ls":
-            contents = listDirectory(cwd);
+            var path = cwd;
+
+            if (argsArray.length == 1){
+                var targetDirectory = args.replace(/^\/+|\/+$/g, '') + "/";
+                if (directoryExists(targetDirectory)){
+                    path = targetDirectory;
+                }else if (directoryExists(cwd + targetDirectory)){
+                    path = targetDirectory;
+                }else{
+                    printError("'" + targetDirectory + "' doesn't exist");
+                    break;
+                }
+            }
+
+            contents = listDirectory(path);
             console.log(contents);
             
             contents["directories"].forEach(directory => {
