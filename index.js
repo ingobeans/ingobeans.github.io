@@ -9,7 +9,7 @@ directories =
         {
             "boopy.txt":`github: https://github.com/ingobeans/boopy
 
-            boopy is a free simple game engine for python with the goal to be quick to use and intuitive. tis based on pygame`,
+            boopy is a free simple game engine for python with the goal to be quick to use and intuitive. 'tis based on pygame`,
 
             "auto-owl-watcher.txt":`github: https://github.com/ingobeans/Auto-OWL-Watcher
 
