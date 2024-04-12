@@ -24,12 +24,33 @@ body {
     overflow: hidden;
 }
 
-.background {
+h1 {
+    padding: 0;
+    margin: 0;
+}
+
+p {
+    padding: 0;
+    margin: 0;
+}
+
+.world {
     z-index: -1;
     background-repeat: repeat-x;
-    background-image: url("background.gif");
     background-position: center bottom;
     width: 100%;
     height: 100%;
     background-size: 345px;
+    padding: 0;
+    margin: 0;
+}
+
+#overworld {
+    background-image: url("overworld.gif");
+}
+
+#oceanworld {
+    background-color: blue;
+    background-image: url("oceanworld.gif");
+    background-position: top;
 }
