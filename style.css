@@ -27,7 +27,7 @@ body {
 .background {
     z-index: -1;
     background-repeat: repeat-x;
-    background-image: url("background.png");
+    background-image: url("background.gif");
     background-position: center bottom;
     width: 100%;
     height: 100%;
