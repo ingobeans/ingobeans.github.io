@@ -47,6 +47,14 @@ p {
     text-align: center;
 }
 
+#spaceworld {
+    background-color: black;
+    background-image: url("transitionSpace.png"), url("moon.png"),
+        url("spaceworld.png");
+    background-position: center bottom, center 100px, center top;
+    background-repeat: repeat-x, no-repeat, repeat;
+}
+
 #overworld {
     background-image: url("overworld.gif");
 }
