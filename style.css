@@ -46,6 +46,7 @@ p {
     margin: 0;
     text-align: center;
     overflow: hidden;
+    height: 100vh;
 }
 
 #spaceworld {
@@ -54,6 +55,7 @@ p {
         url("spaceworld.png");
     background-position: center bottom, center 100px, center top;
     background-repeat: repeat-x, no-repeat, repeat;
+    height: calc(100vh + 300px);
 }
 
 #skyworld {
@@ -61,11 +63,13 @@ p {
     background-image: url("sky.png"), url("dragon.gif");
     background-position: center top, center;
     background-repeat: repeat-x, repeat-x;
+    height: calc(100vh - 100px);
 }
 
 #overworld {
     background-color: cyan;
     background-image: url("overworld.gif");
+    height: calc(100vh - 100px);
 }
 
 #oceanworld {
