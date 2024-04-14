@@ -56,7 +56,15 @@ p {
     background-repeat: repeat-x, no-repeat, repeat;
 }
 
+#skyworld {
+    background-color: cyan;
+    background-image: url("sky.png"), url("dragon.gif");
+    background-position: center top, center;
+    background-repeat: repeat-x, repeat-x;
+}
+
 #overworld {
+    background-color: cyan;
     background-image: url("overworld.gif");
 }
 
