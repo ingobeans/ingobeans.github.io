@@ -16,6 +16,30 @@ body {
   text-shadow: black 2px 2px 0px;
 }
 
+.town {
+  width: calc(61px * 4.6);
+  height: calc(20px * 4.6);
+  position: absolute;
+  left: calc(32px * 4.6);
+  margin-top: calc(24px * 4.6 + 166px);
+}
+.pirate {
+  width: calc(9px * 4.6);
+  height: calc(11px * 4.6);
+  position: absolute;
+  left: calc(136px * 4.6);
+  margin-top: calc(60px * 4.6 + 166px);
+}
+.location {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+}
+.location:hover {
+  cursor: pointer;
+  border: yellow 4.6px solid;
+  border-radius: 0px;
+}
+
 .offscreen {
   position: absolute;
   left: -100000px;
@@ -67,10 +91,10 @@ p {
 }
 
 #overworld {
-  background-color: cyan;
-  background-image: url("town.png"), url("overworld.gif");
-  background-position: bottom left, bottom left;
-  background-repeat: no-repeat, repeat-x;
+  background: url("town.png"), url("overworld.gif"), url("water.png");
+  background-position: center left, center left, left calc(100% + 120px);
+  background-repeat: no-repeat, repeat-x, repeat-x;
+  background-size: 689px;
   height: calc(100vh - 100px);
 }
 
