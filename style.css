@@ -1,79 +1,79 @@
 html {
-    height: 100%;
+  height: 100%;
 }
 
 body {
-    background-color: cyan;
-    margin: 0;
-    image-rendering: optimizeSpeed;
-    image-rendering: -moz-crisp-edges;
-    image-rendering: -o-crisp-edges;
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: pixelated;
-    image-rendering: optimize-contrast;
-    -ms-interpolation-mode: nearest-neighbor;
-    color: white;
-    text-shadow: black 2px 2px 0px;
+  background-color: cyan;
+  margin: 0;
+  image-rendering: optimizeSpeed;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: pixelated;
+  image-rendering: optimize-contrast;
+  -ms-interpolation-mode: nearest-neighbor;
+  color: white;
+  text-shadow: black 2px 2px 0px;
 }
 
 .offscreen {
-    position: absolute;
-    left: -100000px;
-    top: auto;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
+  position: absolute;
+  left: -100000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 h1 {
-    font-size: 34px;
-    margin: 0 0 12px 0;
+  font-size: 34px;
+  margin: 0 0 12px 0;
 }
 
 p {
-    margin: 6px 0px;
-    font-size: 19px;
+  margin: 6px 0px;
+  font-size: 19px;
 }
 
 .world {
-    z-index: -1;
-    background-repeat: repeat-x;
-    background-position: center bottom;
-    width: 100%;
-    height: 100%;
-    background-size: 689px;
-    padding: 0;
-    margin: 0;
-    text-align: center;
-    overflow: hidden;
-    height: 100vh;
+  z-index: -1;
+  background-repeat: repeat-x;
+  background-position: center bottom;
+  width: 100%;
+  height: 100%;
+  background-size: 689px;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  overflow: hidden;
+  height: 100vh;
 }
 
 #spaceworld {
-    background-color: black;
-    background-image: url("transitionSpace.png"), url("moon.png"),
-        url("spaceworld.png");
-    background-position: center bottom, center 100px, center top;
-    background-repeat: repeat-x, no-repeat, repeat;
-    height: calc(100vh + 300px);
+  background-color: black;
+  background-image: url("transitionSpace.png"), url("moon.png"),
+    url("rocket.gif"), url("spaceworld.png");
+  background-position: center bottom, center 100px, center 60%, center top;
+  background-repeat: repeat-x, no-repeat, repeat-x, repeat;
+  height: calc(100vh + 300px);
 }
 
 #skyworld {
-    background-color: cyan;
-    background-image: url("sky.png"), url("dragon.gif");
-    background-position: center top, center;
-    background-repeat: repeat-x, repeat-x;
-    height: calc(100vh - 100px);
+  background-color: cyan;
+  background-image: url("sky.png"), url("dragon.gif");
+  background-position: center top, center;
+  background-repeat: repeat-x, repeat-x;
+  height: calc(100vh - 100px);
 }
 
 #overworld {
-    background-color: cyan;
-    background-image: url("overworld.gif");
-    height: calc(100vh - 100px);
+  background-color: cyan;
+  background-image: url("overworld.gif");
+  height: calc(100vh - 100px);
 }
 
 #oceanworld {
-    background-color: blue;
-    background-image: url("oceanworld.gif");
-    background-position: top;
+  background-color: blue;
+  background-image: url("oceanworld.gif");
+  background-position: top;
 }
