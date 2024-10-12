@@ -21,14 +21,14 @@ body {
   height: calc(20px * 4.6);
   position: absolute;
   left: calc(32px * 4.6);
-  margin-top: calc(24px * 4.6 + 166px);
+  margin-top: calc(24px * 4.6);
 }
 .pirate {
   width: calc(9px * 4.6);
   height: calc(11px * 4.6);
   position: absolute;
   left: calc(136px * 4.6);
-  margin-top: calc(60px * 4.6 + 166px);
+  margin-top: calc(60px * 4.6);
 }
 .location {
   background-color: rgba(0, 0, 0, 0);
@@ -92,7 +92,7 @@ p {
 
 #overworld {
   background: url("town.png"), url("overworld.gif"), url("water.png");
-  background-position: center left, center left, left calc(100% + 120px);
+  background-position: top left, top left, left calc(100% + 120px);
   background-repeat: no-repeat, repeat-x, repeat-x;
   background-size: 689px;
   height: calc(100vh - 100px);
