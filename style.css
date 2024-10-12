@@ -68,7 +68,9 @@ p {
 
 #overworld {
   background-color: cyan;
-  background-image: url("overworld.gif");
+  background-image: url("town.png"), url("overworld.gif");
+  background-position: bottom left, bottom left;
+  background-repeat: no-repeat, repeat-x;
   height: calc(100vh - 100px);
 }
 
