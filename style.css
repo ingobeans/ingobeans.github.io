@@ -17,18 +17,18 @@ body {
 }
 
 .town {
-  width: calc(61px * 4.6);
-  height: calc(20px * 4.6);
+  width: calc(61px * 689 / 150);
+  height: calc(20px * 689 / 150);
   position: absolute;
-  left: calc(32px * 4.6);
-  margin-top: calc(24px * 4.6);
+  left: calc(32px * 689 / 150);
+  margin-top: calc(100vh - (20px + 28px) * 689 / 150);
 }
 .pirate {
-  width: calc(9px * 4.6);
-  height: calc(11px * 4.6);
+  width: calc(9px * 689 / 150);
+  height: calc(11px * 689 / 150);
   position: absolute;
-  left: calc(136px * 4.6);
-  margin-top: calc(60px * 4.6);
+  left: calc(136px * 689 / 150);
+  margin-top: calc(100vh - 11px * 689 / 150);
 }
 .location {
   background-color: rgba(0, 0, 0, 0);
@@ -36,7 +36,8 @@ body {
 }
 .location:hover {
   cursor: pointer;
-  border: yellow 4.6px solid;
+  border: yellow solid;
+  border-width: calc(689px / 150);
   border-radius: 0px;
 }
 
@@ -91,11 +92,10 @@ p {
 }
 
 #overworld {
-  background: url("town.png"), url("overworld.gif"), url("water.png");
-  background-position: top left, top left, left calc(100% + 120px);
-  background-repeat: no-repeat, repeat-x, repeat-x;
+  background: url("town.png"), url("overworld.gif");
+  background-position: bottom left, bottom left;
+  background-repeat: no-repeat, repeat-x;
   background-size: 689px;
-  height: calc(100vh - 100px);
 }
 
 #oceanworld {
