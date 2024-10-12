@@ -17,10 +17,10 @@ body {
 }
 
 .town {
-  width: calc(61px * 689 / 150);
-  height: calc(20px * 689 / 150);
+  width: calc(63px * 689 / 150);
+  height: calc(22px * 689 / 150);
   position: absolute;
-  left: calc(32px * 689 / 150);
+  left: calc(31px * 689 / 150);
   margin-top: calc(100vh - (20px + 28px) * 689 / 150);
 }
 .pirate {
